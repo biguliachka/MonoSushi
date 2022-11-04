@@ -1,0 +1,41 @@
+.route {
+    padding-top: 100px;
+    padding-left: 70px;
+    a {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 12px;
+        color: black;
+        text-decoration: none;
+        padding: 5px;
+        cursor: pointer;
+    }
+}
+.container {
+    width: 700px;
+    margin: 20px auto;
+    margin-bottom: 70px;
+    li {
+        width: 600px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 16px;
+    }
+    li::marker {
+        color: #b5d8f7;
+    }
+    .banner {
+        margin: 20px 0;
+        background-image: url("https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg");
+        width: 764px;
+        height: 180px;
+        background-color: #b5d8f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        a {
+            border-top: 4px solid black;
+            font-size: 40px;
+            border-radius: 3px;
+        }
+    }
+}

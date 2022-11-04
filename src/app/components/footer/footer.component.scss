@@ -1,0 +1,94 @@
+.block {
+    margin-top: 30px;
+    border-top: 4px solid #b5d8f7;
+
+    a {
+        color: rgba(0, 0, 0, 0.685);
+        font-size: 14px;
+        font-family: serif;
+        text-decoration: none;
+    }
+    .footer-top,
+    .footer-bottom {
+        width: 97%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer-top {
+        padding: 20px 0;
+        margin: 0 25px;
+        .information {
+            display: flex;
+            justify-content: space-between;
+        }
+        a {
+            padding-right: 40px;
+        }
+        .tochka,
+        .number,
+        .work {
+            text-align: center;
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            a {
+                padding: 0;
+            }
+        }
+        .text a:hover {
+            color: #b5d8f7;
+        }
+        .number,
+        .work {
+            width: 180px;
+        }
+    }
+    .footer-bottom {
+        margin: 0 25px 15px;
+        a {
+            color: rgba(0, 0, 0, 0.685);
+            font-size: 12px;
+            font-family: serif;
+            display: flex;
+            align-items: center;
+        }
+        .pay {
+            display: flex;
+            justify-content: space-between;
+            width: 145px;
+            .img {
+                border: 1px solid lightgrey;
+                padding: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+            }
+        }
+        .follow,
+        .made {
+            width: 180px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .svg {
+                width: 35px;
+                height: 35px;
+                padding: 5px;
+                margin-left: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #b5d8f7;
+                border-radius: 5px;
+                border: 2px solid #b5d8f7;
+            }
+            .svg:hover {
+                background-color: white;
+            }
+        }
+        .made a:hover {
+            color: #b5d8f7;
+        }
+    }
+}

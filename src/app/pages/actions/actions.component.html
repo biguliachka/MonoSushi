@@ -1,0 +1,15 @@
+<div class="title">
+   <a>Акції</a>
+   <div class="row">
+      <ng-container *ngIf="userActions.length > 0">
+         <div *ngFor="let action of userActions">
+            <div class="news" [routerLink]="[ '/action', action.id ]">
+               <img  width="500px" [src]="action.imagePath">
+               <h4 style='text-transform:uppercase'>{{action.name}}</h4>
+               <button [routerLink]="[ '/action', action.id ]">Дізнатись більше</button>
+            </div>
+         </div>
+      </ng-container>
+   </div>
+
+</div>

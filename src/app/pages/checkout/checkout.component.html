@@ -1,0 +1,83 @@
+<div class="title">
+    <a>Оформити замовлення</a>
+</div>
+<div class="checkout">
+    <div class="information">
+        <img src={{img}}>
+        <p>{{name}}</p>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="minus">-</button>
+            <input class="form-control" type="text" [value]="count">
+            <button type="button" class="plus ">+</button>
+        </div>
+        <div class="basket-price empty ">
+            <b id="basket-total-price" class="card-total-price">{{total}}</b>
+            <span> грн</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash"
+            viewBox="0 0 16 16">
+            <path
+                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+            <path fill-rule="evenodd"
+                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+        </svg>
+    </div>
+    <p class="d-flex justify-content-end mb-5">До сплати: {{total}} грн</p>
+    <input type="text" placeholder="Введіть промокод"><button>ЗАСТОСУВАТИ</button>
+    <div class=" d-flex mt-5 mb-2 ">
+        <div class="square ">1</div>
+        <h4 class="mx-2">Оберіть кількість приборів</h4>
+    </div>
+    <select name="appliances" (change)="select($event)" [(ngModel)]="selectValue">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6 +15грн">6 +15грн</option>
+        <option value="7 +30грн">7 +30грн</option>
+        <option value="8 +45грн">8 +45грн</option>
+        <option value="9 +60грн">9 +60грн</option>
+        <option value="10 +75грн">10 +75грн</option>
+    </select>
+    <select name="educational" class="mx-2" >
+        <option value="Навчальні тримачі" selected disabled>Навчальні тримачі</option>
+        <option *ngFor="let select of selectArray" value="{{select}}">{{select}}</option>
+       
+    </select>
+    <div class=" d-flex mt-5 mb-2">
+        <div class="square ">2</div>
+        <h4 class="mx-2">Спосіб оплати</h4>
+    </div>
+    <div class="mb-5"><input type="radio" name="pay" checked><a class="mx-2">Оплата готівкою</a>
+        <input type="radio" name="pay"><a class="mx-2"> Безготівкова оплата</a>
+    </div>
+    <div class=" d-flex mt-5 mb-2">
+        <div class="square ">3</div>
+        <h4 class="mx-2">Спосіб доставки</h4>
+    </div>
+    <div>
+        <input type="radio" name="delivery" checked><a class="mx-2">Доставка</a>
+        <input type="radio" class="mx-1" name="delivery"><a> Самовивіз ( "Запечені моно макі з лососем" в подарунок)</a>
+        <input type="radio" name="delivery"><a class="mx-2">Заздалегідь</a>
+    </div>
+    <div class="data d-flex flex-wrap my-4">
+        <input type="text" placeholder="Введіть ім'я*">
+        <input type="text" placeholder="Телефон*">
+        <input type="text" placeholder="Вулиця*">
+        <input type="text" placeholder="Номер будинку*">
+        <input type="text" placeholder="Під'їзд">
+        <input type="text" placeholder="Квартира">
+    </div>
+    <div class="d-flex flex-column mb-4">
+        <div> <input type="checkbox"><a class="mx-2">Зателефонуйте мені для уточнення деталей</a></div>
+        <div><input type="checkbox" (click)="addComent()"><a class="mx-2"> Додати коментар</a>
+        </div>
+        <textarea class="my-3" *ngIf="coment" placeholder="Ваш коментар"></textarea>
+        <div><input type="checkbox" (click)="addComentKitchen()"><a class="mx-2">Додати коментар для кухні</a></div>
+        <textarea class="my-3" *ngIf="comentKitchen" placeholder="Ваш коментар для кухні"></textarea>
+    </div>
+    <img width="600px"
+        src="https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fmap2.png?alt=media&token=ea0aa41b-6ee2-42a1-b3d4-014b5f90c0e1">
+    <input type="button" value="ОФОРМИТИ ЗАМОВЛЕННЯ">
+</div>

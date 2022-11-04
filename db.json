@@ -1,0 +1,74 @@
+{
+  "actions": [
+    {
+      "name": "Рол Тижня",
+      "date": "10.2022",
+      "title": "50% знижки на \"Рол тижня\"",
+      "description": "Щотижня діє знижка 50% на один з ролів у нашому меню.\n“Рол тижня” ви можете знайти на головній сторінці нашого сайту.\nЗнижка діє при мінімальній сумі замовлення 300 грн.\nЦя акція не поєднується з іншими акціями.",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2F50%25rolls.jpg?alt=media&token=7d9ee0d1-97d7-4fee-84f0-4669328e2b21",
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "Роли",
+      "path": "rolls",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1b75ab8a-5f27-48f4-83b5-df9f6fcf9c4c",
+      "id": 1
+    },
+    {
+      "name": "Сети",
+      "path": "sets",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fnav-img-sets.svg?alt=media&token=46a463ff-edd9-48a7-9348-1df759f848a2",
+      "id": 2
+    },
+    {
+      "name": "Напої",
+      "path": "drinks",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fnav-img-drinks.svg?alt=media&token=c9ec5f83-5c9b-445f-a162-47b507004ab4",
+      "id": 3
+    },
+    {
+      "name": "Соуси",
+      "path": "sauces",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fnav-img-sousi.svg?alt=media&token=96515a9e-5db7-4f3a-903c-ef170e1b4590",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "category": {
+        "name": "Роли",
+        "path": "rolls",
+        "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fnav-img-rolls.svg?alt=media&token=1b75ab8a-5f27-48f4-83b5-df9f6fcf9c4c",
+        "id": 1
+      },
+      "name": "Філадельфія з лососем",
+      "description": "Риc, крем сир, огірок, лосось",
+      "weight": "280",
+      "price": "232",
+      "imagePath": "https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Ffiladelfiya-z-lososem.jpg?alt=media&token=bee25eec-6e44-4948-ab62-b75bcc3b44f2",
+      "path": "filadelfiya-z-lososem",
+      "count": 1,
+      "id": 1
+    }
+  ],
+  "auth": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "fullName": "Марія Бігуляк",
+      "number": "+38 (097) 999 92 58",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "email": "user@gmail.com",
+      "password": "password",
+      "number": "+38 (066) 999 66 21",
+      "fullName": "Єва Іванова",
+      "role": "USER"
+    }
+  ]
+}

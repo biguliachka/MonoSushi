@@ -1,0 +1,457 @@
+.container-fluid,
+.navbar {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+}
+.navbar {
+    position: fixed;
+    background-color: white;
+    z-index: 5;
+}
+.container-fluid .navbar-brand {
+    display: flex;
+    -moz-box-align: center;
+    align-items: center;
+    background-color: #b5d8f7;
+    padding: 0 15px;
+    width: 166px;
+    height: 95px;
+    margin: 0;
+}
+
+.navbar-nav .nav-item .nav-link {
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.basket {
+    display: inline-flex;
+    img {
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+    }
+}
+.nav-item {
+    width: 75px;
+    height: 70px;
+    text-align: center;
+    button {
+        width: 71px;
+        height: 66px;
+        padding: 0;
+        margin: 0;
+        border-radius: 10px;
+    }
+}
+.navbar-nav {
+    padding-left: 15px;
+    width: 410px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    a {
+        font-size: 14px;
+        margin-top: 4px;
+        line-height: 1em;
+        font-weight: 600;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .gift {
+        width: 30px;
+        height: 48px;
+        background-color: white;
+        z-index: 3;
+        p {
+            padding-top: 5px;
+        }
+    }
+}
+.navbar .container-fluid {
+    justify-content: flex-start;
+}
+.ham {
+    display: flex;
+    z-index: 3;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 0px 86px 0px 15px;
+    width: 35px;
+    height: 30px;
+    margin-left: 15px;
+    cursor: pointer;
+    .line {
+        width: 20px;
+        height: 3px;
+        border-radius: 2px;
+        background-color: #000;
+    }
+}
+.open-popup {
+    width: 160px;
+    padding: 0;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+.phone {
+    width: 170px;
+    font-size: 12px;
+    height: 38px;
+    background-color: #b5d8f7;
+    border: 2px solid #b5d8f7;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+        padding-left: 5px;
+    }
+}
+.phone:hover {
+    background-color: white;
+}
+.header-info {
+    margin: 0 40px;
+    text-align: center;
+    .header-phone {
+        font-size: 14px;
+        color: #000;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .header-work-time {
+        font-size: 11px;
+        width: 150px;
+    }
+}
+
+.open-cart {
+    width: 154px;
+    height: 95px;
+    background-color: #b5d8f7;
+    padding: 25px 40px 20px 20px;
+    cursor: pointer;
+    .header-basket {
+        display: flex;
+        justify-content: space-between;
+        .basket-price {
+            padding-top: 10px;
+        }
+        #zero {
+            margin-left: 22px;
+            position: absolute;
+            width: 22px;
+            height: 20px;
+            text-align: center;
+            background-color: white;
+            border-radius: 100%;
+            font-size: 12px;
+        }
+    }
+}
+
+.close {
+    padding: 0px 86px 0px 15px;
+    width: 35px;
+    height: 30px;
+    margin-left: 15px;
+    z-index: 4;
+}
+.close:hover {
+    opacity: 1;
+}
+.close:before,
+.close:after {
+    position: absolute;
+    left: 615px;
+    content: " ";
+    height: 24px;
+    width: 4px;
+    background-color: black;
+}
+.close:before {
+    transform: rotate(45deg);
+}
+.close:after {
+    transform: rotate(-45deg);
+}
+
+.menu {
+    margin-top: 175px;
+    position: absolute;
+    left: 580px;
+    width: 231px;
+    height: 262px;
+    padding: 88px 25px 20px 25px;
+    border-radius: 10px;
+    border: 2px solid #b5d8f7;
+    background-color: white;
+    p {
+        border: 2px solid white;
+        padding: 6px 0;
+        cursor: pointer;
+        padding-left: 10px;
+    }
+    p:hover {
+        border: 2px solid #b5d8f7;
+        border-radius: 10px;
+    }
+}
+.user {
+    height: 330px;
+    z-index: 2;
+    margin-top: 175px;
+    position: absolute;
+    right: 50px;
+    width: 231px;
+    padding: 95px 25px 20px 25px;
+    border-radius: 10px;
+    border: 2px solid #b5d8f7;
+    background-color: white;
+    p {
+        border: 2px solid white;
+        padding: 6px 0;
+        cursor: pointer;
+        padding-left: 10px;
+    }
+    p:hover {
+        border: 2px solid #b5d8f7;
+        border-radius: 10px;
+    }
+}
+.nav-item {
+    button {
+        display: inline-block;
+        position: relative;
+        background: none;
+        border: none;
+        color: black;
+        cursor: pointer;
+        font-size: 14px;
+        background: white;
+        text-align: center;
+        align-items: center;
+    }
+    span {
+        display: block;
+
+        padding: 8px 15px;
+    }
+    button::before,
+    button::after,
+    .adm::before,
+    .adm::after {
+        content: "";
+        width: 0;
+        height: 2px;
+        position: absolute;
+        transition: all 0.2s linear;
+        background: #b5d8f7;
+    }
+
+    span::before,
+    span::after {
+        content: "";
+        width: 2px;
+        height: 0;
+        position: absolute;
+        transition: all 0.2s linear;
+        background: #b5d8f7;
+    }
+    button:hover::before,
+    button:hover::after {
+        width: 100%;
+    }
+    button:hover span::before,
+    button:hover span::after {
+        height: 100%;
+    }
+    .btn-hover::after {
+        left: 0;
+        bottom: 0;
+        transition-delay: 0.6s;
+    }
+    .btn-hover span::after {
+        transition-delay: 0.4s;
+        right: 0;
+        bottom: 0;
+    }
+    .btn-hover::before {
+        right: 0;
+        top: 0;
+        transition-delay: 0.2s;
+    }
+    .btn-hover span::before {
+        transition-delay: 0s;
+        left: 0;
+        top: 0;
+    }
+
+    .btn-hover:hover::after {
+        transition-delay: 0s;
+    }
+    .btn-hover:hover span::after {
+        transition-delay: 0.2s;
+    }
+    .btn-hover:hover::before {
+        transition-delay: 0.4s;
+    }
+    .btn-hover:hover span::before {
+        transition-delay: 0.6s;
+    }
+}
+.adm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 46px;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+}
+.basket {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.493);
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    display: flex;
+    justify-content: end;
+    .cart {
+        padding-top: 95px;
+        width: 650px;
+        height: 300px;
+        background-color: white;
+        border-radius: 10px;
+        img {
+            width: 110px;
+            height: 50px;
+        }
+        svg:hover {
+            color: #b5d8f7;
+        }
+        .information {
+            border-top: 1px solid lightgray;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            .btn-group {
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+                margin: 0 15px;
+                .minus,
+                .plus {
+                    width: 25px;
+                    background-color: white;
+                    margin: 0 5px;
+                    text-align: center;
+                    padding: 0;
+                    border: none;
+                }
+                .minus:hover,
+                .plus:hover {
+                    background-color: #b5d8f7;
+                }
+
+                input {
+                    border: none;
+                    text-align: center;
+                    width: 40px;
+                }
+            }
+        }
+        .buy {
+            border-radius: 0 0 10px 10px;
+            width: 100%;
+            height: 50%;
+            background-image: url("https://monosushi.com.ua/wp-content/themes/monosushi/img/bg-monosushi-logo.svg");
+            background-color: #b5d8f7;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size: 24px;
+            span {
+                font-family: serif;
+            }
+            button {
+                font-size: 16px;
+                height: 50px;
+                padding: 10px;
+                border: 2px solid white;
+                background-color: white;
+                border-radius: 10px;
+            }
+            button:hover {
+                background-color: #b5d8f7;
+            }
+        }
+    }
+}
+.autorization {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.493);
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    .cart {
+        padding: 40px;
+        margin: 150px auto;
+        width: 650px;
+        height: 350px;
+        background-color: white;
+        border-radius: 10px;
+        .title {
+            text-align: center;
+        }
+
+        input,
+        button {
+            font-family: serif;
+            height: 50px;
+            border-radius: 10px;
+        }
+        button {
+            background-color: #b5d8f7;
+            border-color: #b5d8f7;
+        }
+        button:hover {
+            background-color: white;
+        }
+    }
+    .close {
+        position: absolute;
+        left: 945px;
+        top: 170px;
+        width: 20px;
+        height: 20px;
+        opacity: 0.3;
+    }
+    .close:hover {
+        opacity: 1;
+    }
+
+    .close:before,
+    .close:after {
+        position: absolute;
+        left: 15px;
+        content: " ";
+        height: 20px;
+        width: 2px;
+        background-color: #333;
+    }
+    .close:before {
+        transform: rotate(45deg);
+    }
+    .close:after {
+        transform: rotate(-45deg);
+    }
+}

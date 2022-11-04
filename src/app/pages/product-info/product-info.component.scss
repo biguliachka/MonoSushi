@@ -1,0 +1,63 @@
+.route {
+    padding-top: 100px;
+    padding-left: 70px;
+    a {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 12px;
+        color: black;
+        text-decoration: none;
+        padding: 5px;
+        cursor: pointer;
+    }
+}
+.container {
+    width: 905px;
+    margin: 40px auto;
+
+    span{
+        width: 80px;
+        display: block;
+        float: left;
+        padding-top: 10px;
+    }
+    button {
+        background-color: #b5d8f7;
+        width: 100px;
+        height: 40px;
+        border: none;
+        border-radius: 10px;
+        border: 2px solid #b5d8f7;
+        }
+        button:hover{
+            background-color: white;
+        }
+    .btn-group {
+        border: 1px solid lightgrey;
+        border-radius: 10px;
+        margin: 0 15px;
+        .minus,
+        .plus {
+            width: 25px;
+            background-color: white;
+            margin: 0 5px;
+            text-align: center;
+            padding: 0;
+            border:none;
+        }
+        .minus:hover,
+        .plus:hover {
+            background-color: #b5d8f7;
+        }
+
+        input {
+            border: none;
+            text-align: center;
+            width: 40px;
+        }
+
+    }
+    p{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 16px;
+    }
+}

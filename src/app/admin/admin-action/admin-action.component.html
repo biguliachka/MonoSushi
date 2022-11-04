@@ -1,0 +1,51 @@
+<div class="actions">
+    <button (click)="addActionStatus()">ДОДАТИ АКЦІЮ</button>
+    <div *ngIf="addStatus">
+        <form [formGroup]="actionForm" (ngSubmit)="addAction()">
+            <div><input type="text" formControlName="name" placeholder="*Назва">
+                <input type="text" formControlName="title" placeholder="*Заголовок">
+            </div>
+            <textarea formControlName="description" placeholder="*Опис"></textarea>
+            <ng-container *ngIf="!isUploaded">
+                <input type="file" class="form-control" id="formFile" (change)="upload($event)">
+                <div class="progress mb-3">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="uploadPercent"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isUploaded">
+                <img [src]="valueByControl('imagePath')" width="100px" alt="">
+                <button type="button" class="btn btn-danger" (click)="deleteImage()">delete</button>
+            </ng-container>
+            <button [disabled]="actionForm.invalid" type="submit" (click)="addAction()" class="save">{{ editStatus
+                ? 'ЗБЕРЕГТИ' : 'ДОБАВИТИ' }}</button>
+        </form>
+    </div>
+    <table class="list" id="table">
+        <thead>
+            <tr>
+                <td style="width :150px; "> <a>Дата </a> </td>
+                <td style="width :150px; "> <a>Назва </a> </td>
+                <td style="width :200px;"> <a>Заголовок</a></td>
+                <td style="width :250px"> <a>Опис</a></td>
+                <td style="width :120px; "><a>Картинка</a></td>
+                <td style="width :120px;  "> <a>Дії</a></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let action of adminActions">
+            <tr>
+                <td style="width :170px; "> <a>{{action.date}} </a> </td>
+                <td style="width :170px; "> <a>{{action.name}} </a> </td>
+                <td style="width :200px;"> <a>{{action.title}}</a></td>
+                <td style="width :280px"> <a>{{action.description| slice:0:52 }} 
+                    <span *ngIf="action.description.length > 52">...</span> </a>
+                </td>
+                <td style="width :120px; "><img [src]="action.imagePath" alt="" height="50px"></td>
+                <td style="width :120px;  ">
+                    <div class='buttons'><button (click)="editAction(action)"> Редагувати</button> <button
+                            (click)="deleteAction(action)" [disabled]="editStatus"> Видалити</button></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,84 @@
+.title {
+    padding-top: 140px;
+    font-size: 42px;
+    text-align: center;
+    a {
+        padding-top: 5px;
+        border-top: 6px solid #b5d8f7;
+        border-radius: 5px;
+    }
+}
+.zone {
+    margin: 20px auto;
+    width: 1134px;
+    height: 175px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    p {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 16px;
+    }
+    .green-zone {
+        width: 50%;
+        height: 175px;
+        display: flex;
+        justify-content: space-between;
+        a {
+            color: seagreen;
+        }
+    }
+    .yellow-zone {
+        width: 50%;
+        height: 175px;
+        display: flex;
+        justify-content: space-between;
+        a {
+            color: gold;
+        }
+    }
+}
+.map {
+    width: 915px;
+    height: 500px;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/monosushi-5576a.appspot.com/o/images%2Fmap.png?alt=media&token=d9c4d2a6-6e94-4f7e-852a-ea79f525f095");
+    background-size: cover;
+    margin: 10px auto;
+}
+.text {
+    margin: 20px auto;
+    width: 779px;
+    color: rgba(0, 0, 0, 0.719);
+}
+.title2{
+    padding-top: 20px;
+    font-size: 42px;
+    text-align: center;
+}
+.oplata{
+    margin: 0 auto;
+    width: 780px;
+    display: flex;
+    justify-content: space-around;
+    height: 103px;
+    margin-bottom: 70px;
+.img{
+    float: left;
+    padding: 20px 10px;
+    background-color: #b5d8f7;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+p{
+    font-size: 15px;
+    padding-left: 50px;
+    color: rgba(0, 0, 0, 0.719);
+}
+.cash{
+    border-right: 1px solid lightgray;
+}
+.cash,
+.pay{
+    padding: 20px;
+}
+}

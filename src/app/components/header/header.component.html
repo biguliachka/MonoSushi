@@ -1,0 +1,181 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="[ '' ]"><img
+                src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" height="51px" width="136px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarSupportedContent" style=" width: 410px; height: 70px;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <button [routerLink]="[ '/actions' ]" routerLinkActive="route-active" class="nav-link btn-hover"
+                        aria-current="page">
+                        <span>
+                            <div class="gift"> <img
+                                    src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-gift.svg"
+                                    width="28px" height="30px" alt="">
+                                <p>Акції</p>
+                            </div>
+                        </span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button [routerLink]="[ '/product-category/rolls' ]" routerLinkActive="route-active"
+                        class="nav-link btn-hover" aria-current="page">
+                        <span>
+                            <div class="gift"><img
+                                    src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-rolls.svg"
+                                    width="28px" height="30px" alt="">
+                                <p>Роли</p>
+                            </div>
+                        </span>
+
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button [routerLink]="[ '/product-category/sets' ]" routerLinkActive="route-active"
+                        class="nav-link btn-hover" aria-current="page">
+                        <span>
+                            <div class="gift"> <img
+                                    src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-sets.svg"
+                                    width="28px" height="30px" alt="">
+                                <p>Сети</p>
+                            </div>
+                        </span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button [routerLink]="[ '/product-category/drinks' ]" routerLinkActive="route-active"
+                        class="nav-link btn-hover" aria-current="page">
+                        <span>
+                            <div class="gift"> <img
+                                    src="https://monosushi.com.ua/wp-content/uploads/2020/10/nav-img-drinks.svg"
+                                    width="28px" height="30px" alt="">
+                                <p>Напої</p>
+
+                            </div>
+                        </span>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button [routerLink]="[ '/product-category/sauces' ]" routerLinkActive="route-active"
+                        class="nav-link btn-hover" aria-current="page">
+                        <span>
+                            <div class="gift"> <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg"
+                                    width="28px" height="30px" alt="">
+                                <p>Соуси</p>
+
+                            </div>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="!burgerMenu" class="ham btn-hover" (click)="BurgerMenu()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div *ngIf="burgerMenu" class="close" (click)="BurgerMenu()"></div>
+        <div *ngIf="burgerMenu" class="menu">
+            <p [routerLink]="['/dostavka-ta-oplata' ]" (click)="BurgerMenu()">Доставка та оплата</p>
+            <p [routerLink]="['/about-us' ]" (click)="BurgerMenu()">Про нас</p>
+            <p [routerLink]="['/actions' ]" (click)="BurgerMenu()">Акції</p>
+        </div>
+
+        <button class="btn open-popup" data-rel="4">
+            <div class="phone">
+                <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt=""
+                    oncontextmenu="return false">
+                <a>МИ ЗАТЕЛЕФОНУЄМО</a>
+            </div>
+        </button>
+        <div class="header-info">
+            <a class="header-phone">(097) 878 08 37</a>
+            <div class="header-work-time">Працюємо з <b>11:00</b> до <b>21:30</b></div>
+        </div>
+
+        <div class="adm " (click)=" OpenAutorization()" (click)=" UserMenu()" routerLinkActive="route-active">
+            <span> <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></span>
+        </div>
+        <div *ngIf="userMenu" class=" user">
+            <p [routerLink]="['/cabinet' ]" (click)="UserMenu()">Особисті дані</p>
+            <p [routerLink]="['/history' ]" (click)="UserMenu()">Історія замовлення</p>
+            <p [routerLink]="['/user-password' ]" (click)="UserMenu()">Зміна паролю</p>
+            <p (click)="logout() " (click)="UserMenu()">Вихід</p>
+        </div>
+
+        <div class="header-basket open-cart" (click)="OpenBasket()">
+            <div class="header-basket ">
+                <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/basket.svg" alt="basket"
+                    oncontextmenu="return false">
+                <span id="zero">{{count}}</span>
+                <div class="basket-price empty ">
+                    <b id="basket-total-price" class="card-total-price">{{total}}</b>
+                    <span>грн</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<div class="basket" *ngIf="openBasket">
+    <div class="cart">
+        <div class="information " *ngIf="total == 0">
+            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
+            <p class="d-flex align-item-center"> Кошик порожній </p>
+        </div>
+        <div class="information" *ngIf="total != 0">
+            <img src={{img}}>
+            <p>{{name}}</p>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="minus">-</button>
+                <input class="form-control" type="text" [value]="count">
+                <button type="button" class="plus ">+</button>
+            </div>
+            <div class="basket-price empty ">
+                <b id="basket-total-price" class="card-total-price">{{total}}</b>
+                <span> грн</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash"
+                viewBox="0 0 16 16">
+                <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                <path fill-rule="evenodd"
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+            </svg>
+        </div>
+        <div class="buy">
+            <div><span>Сума: </span><b id="basket-total-price" class="card-total-price">{{total}}</b>
+                <span> грн</span>
+            </div>
+
+            <button [disabled]="total== 0" [routerLink]="['/checkout' ]" (click)="OpenBasket()"><span><b>ОФОРМИТИ
+                        ЗАМОВЛЕННЯ</b></span></button>
+        </div>
+    </div>
+</div>
+<div class="autorization" *ngIf="openAutorization">
+    <div class="cart">
+        <div class="close" (click)=" OpenAutorization()"></div>
+        <h2 class="title ">Вхід в кабінет</h2>
+        <div class="row">
+            <div class="col-12 m-auto mt-3">
+                <form [formGroup]="authForm" (ngSubmit)="login()">
+                    <div class="mb-3">
+                        <input formControlName="email" name="email" type="text" class="form-control" id="email"
+                            placeholder="*Ваш email">
+                    </div>
+                    <div class="mb-3">
+                        <input formControlName="password" name="password" type="password" class="form-control"
+                            id="password" placeholder="*Пароль">
+                    </div>
+                    <button [disabled]="authForm.invalid" type="submit" class="btn  w-100"><a>УВІЙТИ В
+                            КАБІНЕТ</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

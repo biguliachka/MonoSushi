@@ -1,0 +1,125 @@
+.title {
+    padding-top: 140px;
+    font-size: 42px;
+    text-align: center;
+    a {
+        padding-top: 5px;
+        border-top: 6px solid #b5d8f7;
+        border-radius: 5px;
+    }
+}
+.categories-list {
+    margin: auto;
+    width: 1190px;
+    display: flex;
+    justify-content: space-evenly;
+    .categories-list-item {
+        border: 1px solid lightgray;
+        padding: 20px;
+        width: 170px;
+    }
+    li {
+        text-align: center;
+        list-style: none;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+    .active {
+        border: none;
+        border-top: 3px solid #b5d8f7;
+    }
+}
+.all-products {
+    margin: 40px auto;
+    width: 95%;
+    display: flex;
+
+    .product {
+        width: 350px;
+        padding: 35px 10px;
+        height: 412px;
+        border: 3px solid white;
+        align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        a {
+            font-size: 14px;
+
+            color: grey;
+        }
+        h5:hover{
+            color:#b5d8f7
+        }
+        .weight {
+            margin-left: 20px;
+            color: rgba(0, 0, 0, 0.74);
+            text-decoration: none;
+        }
+        button {
+            background-color: #b5d8f7;
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            border: 2px solid #b5d8f7;
+        }
+        button:hover{
+            background-color: white;
+        }
+        h5 {
+            margin: 60px 0 40px 0;
+            cursor: pointer;
+        }
+        img{
+            cursor: pointer;
+        }
+        .count {
+            height: 40px;
+            width: 70px;
+            border: 1px solid lightgrey;
+            border-radius: 10px;
+            background-color: white;
+            margin: 0 10px;
+        }
+        .about {
+            padding-top: 20px;
+            .btn-group {
+                border: 1px solid lightgrey;
+                border-radius: 10px;
+                margin:0 5px;
+                .minus,
+                .plus {
+                    width: 25px;
+                    background-color: white;
+                    margin:0  5px;
+                    text-align: center;
+                   padding: 0;
+                   border:none;
+                }
+                .minus:hover,
+                .plus:hover{
+                    background-color: #b5d8f7;
+                }
+                
+                input{
+                    border:none;
+                    text-align: center;
+                    width: 40px;
+                }
+            }
+        }
+    }
+    .product:hover {
+        border: 3px solid #b5d8f7;
+        border-radius: 10px;
+    }
+}
+span{
+    width: 100px;
+    display: block;
+    float: left;
+    padding-top: 10px;
+}
