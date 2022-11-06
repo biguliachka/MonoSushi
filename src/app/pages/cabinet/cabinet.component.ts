@@ -16,10 +16,12 @@ public userName!: any
 
   ngOnInit(): void {
     this.userPage()
+    console.log(this.user);
+    
   }
 
   userPage(): void {
    this.user = JSON.parse(localStorage.currentUser)
- this.userName = this.user.fullName.split(' ')
+
   }
 }

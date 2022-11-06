@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-light" [style.z-index]="isBasket ? 1001 : 4">
+    <div class="container-fluid" >
+        <div class="d-flex justify-content-event align-items-center" (click)="closeModal()">
         <a class="navbar-brand" [routerLink]="[ '' ]"><img
                 src="https://monosushi.com.ua/wp-content/uploads/2021/06/logo.svg" height="51px" width="136px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -95,9 +96,10 @@
             <a class="header-phone">(097) 878 08 37</a>
             <div class="header-work-time">Працюємо з <b>11:00</b> до <b>21:30</b></div>
         </div>
-
-        <div class="adm " (click)=" OpenAutorization()" (click)=" UserMenu()" routerLinkActive="route-active">
-            <span> <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></span>
+        </div>
+        <div class="adm " routerLinkActive="route-active">
+            <span (click)="openLoginDialog()" aria-current="page"> <img
+                    src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></span>
         </div>
         <div *ngIf="userMenu" class=" user">
             <p [routerLink]="['/cabinet' ]" (click)="UserMenu()">Особисті дані</p>
@@ -118,64 +120,6 @@
             </div>
 
         </div>
+
     </div>
 </nav>
-
-<div class="basket" *ngIf="openBasket">
-    <div class="cart">
-        <div class="information " *ngIf="total == 0">
-            <img src="https://monosushi.com.ua/wp-content/themes/monosushi/img/icons/cart-empty-img.svg" alt="">
-            <p class="d-flex align-item-center"> Кошик порожній </p>
-        </div>
-        <div class="information" *ngIf="total != 0">
-            <img src={{img}}>
-            <p>{{name}}</p>
-            <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="minus">-</button>
-                <input class="form-control" type="text" [value]="count">
-                <button type="button" class="plus ">+</button>
-            </div>
-            <div class="basket-price empty ">
-                <b id="basket-total-price" class="card-total-price">{{total}}</b>
-                <span> грн</span>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash"
-                viewBox="0 0 16 16">
-                <path
-                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                <path fill-rule="evenodd"
-                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-            </svg>
-        </div>
-        <div class="buy">
-            <div><span>Сума: </span><b id="basket-total-price" class="card-total-price">{{total}}</b>
-                <span> грн</span>
-            </div>
-
-            <button [disabled]="total== 0" [routerLink]="['/checkout' ]" (click)="OpenBasket()"><span><b>ОФОРМИТИ
-                        ЗАМОВЛЕННЯ</b></span></button>
-        </div>
-    </div>
-</div>
-<div class="autorization" *ngIf="openAutorization">
-    <div class="cart">
-        <div class="close" (click)=" OpenAutorization()"></div>
-        <h2 class="title ">Вхід в кабінет</h2>
-        <div class="row">
-            <div class="col-12 m-auto mt-3">
-                <form [formGroup]="authForm" (ngSubmit)="login()">
-                    <div class="mb-3">
-                        <input formControlName="email" name="email" type="text" class="form-control" id="email"
-                            placeholder="*Ваш email">
-                    </div>
-                    <div class="mb-3">
-                        <input formControlName="password" name="password" type="password" class="form-control"
-                            id="password" placeholder="*Пароль">
-                    </div>
-                    <button [disabled]="authForm.invalid" type="submit" class="btn  w-100"><a>УВІЙТИ В
-                            КАБІНЕТ</a></button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>

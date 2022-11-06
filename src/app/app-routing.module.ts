@@ -21,7 +21,7 @@ import { CabinetComponent } from './pages/cabinet/cabinet.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { UserPasswordComponent } from './pages/user-password/user-password/user-password.component';
-
+import { AdminAuthComponent } from './components/admin-auth/admin-auth.component';
 
 
 const routes: Routes = [
@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'dostavka-ta-oplata', component: DostavkaTaOplataComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'history', component: HistoryComponent },
+  { path: 'auth', component: AdminAuthComponent },
   { path: 'cabinet', component: CabinetComponent, canActivate: [AuthGuard] },
   {
     path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
