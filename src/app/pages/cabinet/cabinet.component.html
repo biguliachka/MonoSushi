@@ -1,23 +1,9 @@
 <div class="left-block">
-    <a [routerLink]="[ '/cabinet' ]" routerLinkActive="route-active" class="nav-link ">Особисті дані</a>
-    <a [routerLink]="[ '/history' ]" routerLinkActive="route-active" class="nav-link ">Історія замовлень</a>
-    <a [routerLink]="[ '/user-password' ]" routerLinkActive="route-active" class="nav-link ">Зміна паролю</a>
+    <a [routerLink]="[ 'personal-data' ]" routerLinkActive="route-active" class="nav-link ">Особисті дані</a>
+    <a [routerLink]="[ 'history' ]" routerLinkActive="route-active" class="nav-link ">Історія замовлень</a>
+    <a [routerLink]="[ 'user-password' ]" routerLinkActive="route-active" class="nav-link ">Зміна паролю</a>
 </div>
+
 <div class="tab-content" id="v-pills-tabContent">
-    <div class="col-2 d-flex justify-content-around ">
-        <div class="square">1</div>
-        <h4>Особисті дані</h4>
-    </div>
-    <div class="name">
-        <input type="text" [value]="user.firstName">
-        <input type="text" [value]="user.lastName">
-    </div>
-    <input type="text" [value]="user.phoneNumber">
-    <input type="text" [value]="user.email">
-    <div style='width:160px' class=" d-flex justify-content-around mt-5">
-        <div class="square">2</div>
-        <h4 >Адреси </h4>
-    </div>
-    <button class="white btn  ">ДОДАТИ АДРЕСУ</button>
-    <button class="blue btn ">ЗБЕРЕГТИ ЗМІНИ</button>
+  <router-outlet></router-outlet>
 </div>

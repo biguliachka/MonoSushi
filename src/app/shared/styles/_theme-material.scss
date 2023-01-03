@@ -73,6 +73,17 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
   border-radius: 10px;
 }
 
+.call-dialog {
+  background-color: white;
+  width: 650px;
+  min-height: 400px;
+  border-radius: 10px;
+
+}
+
+.call-dialog-back {
+  background-color: rgba(0, 0, 0, 0.701);
+}
 .basket-dialog {
   display: flex;
   background-color: rgba(255, 255, 255, 0);
@@ -87,8 +98,8 @@ $custom-theme: mat.define-light-theme($custom-theme-primary, $custom-theme-accen
   scrollbar-width: 1px;
 }
 .mat-dialog-container::-webkit-scrollbar{
-  width: 0px;
+  width: 0;
 }
 .mat-dialog-container::-webkit-scrollbar-track{
-  width: 0px;
+  width: 0;
 }

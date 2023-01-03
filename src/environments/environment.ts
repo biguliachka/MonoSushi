@@ -4,12 +4,12 @@
 
 export const environment = {
   firebase: {
-    apiKey: "AIzaSyDixSauhoOSlZYcHmqjEDzLNXmrjLI46J8",
-    authDomain: "monosushi-5576a.firebaseapp.com",
-    projectId: "monosushi-5576a",
-    storageBucket: "monosushi-5576a.appspot.com",
-    messagingSenderId: "190174489390",
-    appId: "1:190174489390:web:96571656d509f50eb9a8bf"
+    apiKey: "AIzaSyAZHj8-E6Y6_Tk6-cLzBHCKPqsPmJxXYTY",
+    authDomain: "monosushi-41229.firebaseapp.com",
+    projectId: "monosushi-41229",
+    storageBucket: "monosushi-41229.appspot.com",
+    messagingSenderId: "419170388090",
+    appId: "1:419170388090:web:9a920b3dd4a6c7999153c3",
   },
   production: false,
   BACKEND_URL: 'http://localhost:3000'

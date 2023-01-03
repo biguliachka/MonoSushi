@@ -17,6 +17,7 @@ export class AuthComponent implements OnInit {
   public authForm!: FormGroup;
   public registerForm!: FormGroup;
   public isLogin = false;
+  public errorPass =false;
 
   constructor(
     private auth: Auth,
@@ -43,6 +44,7 @@ export class AuthComponent implements OnInit {
     this.registerForm = this.fb.group({
       email: [null, [Validators.required]],
       password: [null, [Validators.required]],
+      password2: [null, [Validators.required]],
       firstName: [null, [Validators.required]],
       lastName: [null, [Validators.required]],
       phoneNumber: [null, [Validators.required]],
@@ -61,28 +63,34 @@ export class AuthComponent implements OnInit {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
       if(user && user.role === ROLE.USER) {
-        this.router.navigate(['/cabinet']);
+        this.router.navigate(['/cabinet/personal-data']);
         const currentUser = { ...user, uid: credential.user.uid };
         localStorage.setItem('currentUser', JSON.stringify(currentUser));
-      } 
+      }
       this.accountService.isUserLogin$.next(true);
     }, (e) => {
       console.log('error', e);
     })
  }
 
-  registerUser(): void { 
-    const { email, password, firstName, lastName, phoneNumber} = this.registerForm.value;
-    this.emailSignUp(email, password, firstName, lastName, phoneNumber).then(() => {
-      this.isLogin = !this.isLogin;
-      this.authForm.reset();
-    }).catch((e) => {
-      console.log (e.message); 
-     })
+  registerUser(): void {
+    const {email, password, password2, firstName, lastName, phoneNumber} = this.registerForm.value;
+    if (password === password2) {
+      this.emailSignUp(email, password, firstName, lastName, phoneNumber).then(() => {
+        this.isLogin = !this.isLogin;
+        this.authForm.reset();
+        this.errorPass = false;
+      }).catch((e) => {
+        console.log(e.message);
+      })
+    }
+    else{
+      this.errorPass =true;
+    }
   }
 
   async emailSignUp(email: string, password: string, firstName: string, lastName: string, phoneNumber: string): Promise<any> {
-    const credential = await createUserWithEmailAndPassword(this.auth, email, password);  
+    const credential = await createUserWithEmailAndPassword(this.auth, email, password);
     const user = {
       email: credential.user.email,
       firstName:this.registerForm.value.firstName,

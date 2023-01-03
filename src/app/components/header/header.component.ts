@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Http2Server } from 'http2';
-import { relative } from 'path';
 import { ROLE } from 'src/app/shared/constants/role.constant';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { AccountService } from 'src/app/shared/services/account/account.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { AuthComponent } from '../auth/auth.component';
 import { BasketComponent } from '../basket/basket.component';
+import {CallComponent} from "../call/call.component";
+
 
 @Component({
   selector: 'app-header',
@@ -19,16 +19,12 @@ export class HeaderComponent implements OnInit {
   public burgerMenu = false;
   public userMenu = false;
   public isBasket = false;
-  public openAutorization = false;
-  public isLogin = false;
-  public loginUrl = '';
-  public loginPage = '';
-  public ndex = 4;
+  public close =false
 
   BurgerMenu(): void {
     this.burgerMenu = !this.burgerMenu
   }
-
+public isCall = false;
   public total = 0;
   public count = 0;
   public img!: string;
@@ -40,6 +36,7 @@ export class HeaderComponent implements OnInit {
     private accountService: AccountService,
     public dialog: MatDialog,
     public basketDialog: MatDialog,
+    public callDialog: MatDialog,
     private router: Router,
   ) { }
 
@@ -51,7 +48,8 @@ export class HeaderComponent implements OnInit {
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
-      this.count = JSON.parse(localStorage.getItem('basket') as string)[0].count
+      this.count = this.basket
+        .reduce((count: number, prod: IProductResponse) => count + prod.count , 0);
     }
     this.getTotalPrice();
   }
@@ -71,7 +69,8 @@ export class HeaderComponent implements OnInit {
   }
   OpenBasket(): void {
     this.isBasket = !this.isBasket
-    if (this.isBasket == true) {
+    if (this.isBasket ) {
+      this.close = true
       this.basketDialog.open(BasketComponent, {
         backdropClass: 'basket-dialog-back',
         panelClass: 'basket-dialog',
@@ -81,13 +80,19 @@ export class HeaderComponent implements OnInit {
         console.log(result);
       })
     }
-    else if (this.isBasket == false) {
+    else if (!this.isBasket) {
+
      this.closeModal()
     }
   }
 
 closeModal():void{
-   this.basketDialog.closeAll()
+    if (this.close ){
+      this.basketDialog.closeAll()
+      this.isBasket =false
+      this.close = false
+    }
+
 }
 
   logout(): void {
@@ -116,6 +121,21 @@ closeModal():void{
       this.router.navigate(['/admin/action']);
     }
 
+  }
+  OpenCallDialog(): void {
+    this.isCall = !this.isCall
+    if (this.isCall == true) {
+      this.callDialog.open(CallComponent, {
+        backdropClass: 'call-dialog-back',
+        panelClass: 'call-dialog',
+        autoFocus: false
+      }).afterClosed().subscribe(result => {
+        console.log(result);
+      })
+    }
+    else if (!this.isCall ) {
+      this.closeModal()
+    }
   }
 }
 

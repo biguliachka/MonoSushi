@@ -1,22 +1,24 @@
 <div class="route">
-    <a  [routerLink]="[ '' ]">Головна &#8226;</a> 
-    <a  [routerLink]="[ '/product-category/rolls' ]">{{currentProduct.category.name}} &#8226;</a> 
-    <a >Філадельфія &#8226;</a> 
+  <a  [routerLink]="[ '' ]">Головна &#8226;</a>
+  <a  [routerLink]="[ '/product/'+currentProduct.category.path ]">{{currentProduct.category.name}} &#8226;</a>
     <a>{{currentProduct.name}}</a>
 </div>
 <div class="container ">
     <div class="col-12 mt-3">
         <div class=" mb-3">
             <div class="row g-0">
-                <div class="col-md-6 ">
+                <div class="col-md-6 d-flex align-items-center ">
                     <img [src]="currentProduct.imagePath" class="img-fluid rounded-start" [alt]="currentProduct.name">
                 </div>
-                <div class="col-md-5 ">
+                <div class="col-md-5 d-flex align-items-center ">
                     <div class="card-body">
                         <h1 class="card-title">{{ currentProduct.name }}</h1>
-                        <p class="card-text"><a style="color:#b5d8f7">Склад: </a>{{ currentProduct.description }}</p>
+                      <div *ngIf="currentCategoryPath !== ( 'drinks' && 'sauces' ) ">
+                        <p  class="card-text"><a style="color:#b5d8f7">Склад: </a>{{ currentProduct.description }}</p>
                         <p class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentProduct.weight }} гр</p>
-                        <span>
+                    </div>
+                      <p *ngIf="currentCategoryPath ==( 'drinks' && 'sauces' )" class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentProduct.weight }} л</p>
+                      <span>
                             {{ currentProduct.price  * currentProduct.count }} грн
                         </span>
                         <div class="btn-group" role="group" aria-label="Basic example">

@@ -5,6 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 const MATERIAL = [
     MatDialogModule,
     MatFormFieldModule,
@@ -15,10 +18,14 @@ const MATERIAL = [
 @NgModule({
     declarations: [],
     imports: [
-        ...MATERIAL
+        ...MATERIAL,
+      FormsModule,
+      ReactiveFormsModule
     ],
     exports: [
-        ...MATERIAL
+        ...MATERIAL,
+      FormsModule,
+      ReactiveFormsModule
     ]
 })
 export class SharedModule { }

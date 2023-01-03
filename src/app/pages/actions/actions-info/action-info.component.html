@@ -1,0 +1,14 @@
+
+<div class="route">
+  <a  [routerLink]="[ '' ]">Головна &#8226;</a>
+  <a  [routerLink]="[ '/actions' ]">Акції &#8226;</a>
+  <a>{{currentAction?.name}}</a>
+</div>
+<div class="container">
+    <div class="banner">
+      <a>{{currentAction?.title}}</a>
+    </div>
+  <div *ngFor="let text of text">
+    <li>{{ text }}.</li>
+  </div>
+</div>

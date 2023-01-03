@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/shared/services/product/product.service'
 })
 export class ProductInfoComponent implements OnInit {
   public currentProduct!: IProductResponse;
+  public currentCategoryName!: string;
+  public currentCategoryPath!: string;
 
   constructor(
     private productService: ProductService,
@@ -21,8 +23,10 @@ export class ProductInfoComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(response => {
       this.currentProduct = response.productInfo;
+      this.currentCategoryName = this.currentProduct.category.name;
+      this.currentCategoryPath = this.currentProduct.category.path;
+
     })
-    
   }
 
   loadProduct(): void {

@@ -75,20 +75,18 @@ export class AdminProductComponent implements OnInit {
         this.productForm.reset()
         this.isUploaded = false;
         this.addStatus = false;
-        this.editStatus = false; 
-       
+        this.editStatus = false;
+
       })
     } else {
       this.productService.create(this.productForm.value).subscribe(() => {
         this.loadProduct();
-        console.log(this.productForm);
-        
         this.addStatus = false;
         this.editStatus = false;
 
       })
     }
-  
+
   }
 
 
@@ -103,8 +101,8 @@ export class AdminProductComponent implements OnInit {
       imagePath: product.imagePath,
       path: product.path
     });
-  
-    
+
+
     this.addStatus = true;
     this.isUploaded = true;
     this.editStatus = true;

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light" [style.z-index]="isBasket ? 1001 : 4">
+<nav class="navbar navbar-expand-lg bg-light" [style.z-index]="isBasket ? 1001 : 4" >
     <div class="container-fluid" >
         <div class="d-flex justify-content-event align-items-center" (click)="closeModal()">
         <a class="navbar-brand" [routerLink]="[ '' ]"><img
@@ -22,7 +22,7 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button [routerLink]="[ '/product-category/rolls' ]" routerLinkActive="route-active"
+                    <button [routerLink]="[ '/product/rolls' ]" routerLinkActive="route-active"
                         class="nav-link btn-hover" aria-current="page">
                         <span>
                             <div class="gift"><img
@@ -35,7 +35,7 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button [routerLink]="[ '/product-category/sets' ]" routerLinkActive="route-active"
+                    <button [routerLink]="[ '/product/sets' ]" routerLinkActive="route-active"
                         class="nav-link btn-hover" aria-current="page">
                         <span>
                             <div class="gift"> <img
@@ -47,7 +47,7 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button [routerLink]="[ '/product-category/drinks' ]" routerLinkActive="route-active"
+                    <button [routerLink]="[ '/product/drinks' ]" routerLinkActive="route-active"
                         class="nav-link btn-hover" aria-current="page">
                         <span>
                             <div class="gift"> <img
@@ -60,7 +60,7 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button [routerLink]="[ '/product-category/sauces' ]" routerLinkActive="route-active"
+                    <button [routerLink]="[ '/product/sauces' ]" routerLinkActive="route-active"
                         class="nav-link btn-hover" aria-current="page">
                         <span>
                             <div class="gift"> <img src="https://monosushi.com.ua/wp-content/uploads/2021/09/icon.svg"
@@ -84,16 +84,14 @@
             <p [routerLink]="['/about-us' ]" (click)="BurgerMenu()">Про нас</p>
             <p [routerLink]="['/actions' ]" (click)="BurgerMenu()">Акції</p>
         </div>
-
-        <button class="btn open-popup" data-rel="4">
-            <div class="phone">
-                <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt=""
-                    oncontextmenu="return false">
+        <button class="btn "  (click)="OpenCallDialog()" >
+            <div class="phone" >
+                <img src="https://monosushi.com.ua/wp-content/uploads/2020/10/phone.svg" alt="">
                 <a>МИ ЗАТЕЛЕФОНУЄМО</a>
             </div>
         </button>
-        <div class="header-info">
-            <a class="header-phone">(097) 878 08 37</a>
+        <div class="header-info" >
+            <a class="header-phone" >(097) 878 08 37</a>
             <div class="header-work-time">Працюємо з <b>11:00</b> до <b>21:30</b></div>
         </div>
         </div>
@@ -102,9 +100,9 @@
                     src="https://monosushi.com.ua/wp-content/themes/monosushi/img/user.svg" alt=""></span>
         </div>
         <div *ngIf="userMenu" class=" user">
-            <p [routerLink]="['/cabinet' ]" (click)="UserMenu()">Особисті дані</p>
-            <p [routerLink]="['/history' ]" (click)="UserMenu()">Історія замовлення</p>
-            <p [routerLink]="['/user-password' ]" (click)="UserMenu()">Зміна паролю</p>
+            <p [routerLink]="['/cabinet/personal-data' ]" (click)="UserMenu()">Особисті дані</p>
+            <p [routerLink]="['/cabinet/history' ]" (click)="UserMenu()">Історія замовлення</p>
+            <p [routerLink]="['/cabinet/user-password' ]" (click)="UserMenu()">Зміна паролю</p>
             <p (click)="logout() " (click)="UserMenu()">Вихід</p>
         </div>
 

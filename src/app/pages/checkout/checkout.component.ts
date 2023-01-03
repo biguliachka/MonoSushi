@@ -13,7 +13,7 @@ export class CheckoutComponent implements OnInit {
   public count = 0;
   public img!: string;
   public name!: string;
-  private basket: Array<IProductResponse> = [];
+  public basket: Array<IProductResponse> = [];
   public coment = false;
   public comentKitchen = false;
   public selectValue ='1';
@@ -43,9 +43,8 @@ export class CheckoutComponent implements OnInit {
   loadBasket(): void {
     if (localStorage.length > 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
-      this.count = JSON.parse(localStorage.getItem('basket') as string)[0].count
-      this.img = JSON.parse(localStorage.getItem('basket') as string)[0].imagePath
-      this.name = JSON.parse(localStorage.getItem('basket') as string)[0].name
+      this.count = this.basket
+        .reduce((count: number, prod: IProductResponse) => count + prod.count , 0);
     }
     this.getTotalPrice();
   }
@@ -60,4 +59,28 @@ export class CheckoutComponent implements OnInit {
       this.loadBasket();
     })
   }
+
+  productCount(product: IProductResponse, value: boolean): void {
+    if(value){
+      ++product.count;
+    } else if(!value && product.count > 1){
+      --product.count;
+    }
+    this.getTotalPrice()
+    localStorage.setItem('basket', JSON.stringify(this.basket));
+    this.orderService.changeBasket.next(true);
+
+  }
+  deleteBasket(product: IProductResponse): void{
+    let basket: Array<IProductResponse>
+    basket = JSON.parse(localStorage.getItem('basket') as string);
+    for(let i=0; i< basket.length; i++){
+      if(basket[i].name ==product.name) {
+        basket.splice(i,1)
+      }
+    }
+    localStorage.setItem('basket', JSON.stringify(basket));
+    this.orderService.changeBasket.next(true);
+  }
+
 }

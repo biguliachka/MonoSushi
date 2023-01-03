@@ -1,22 +1,26 @@
-<div class="title">
-    <a>Продукти</a>
+
+  <div class="title" >
+    <a>{{currentCategoryName}}</a>
 </div>
-<div *ngFor="let product of userProducts">
-    <ul class="categories-list">
-        <li class="categories-list-item active"><a class="category_ajax">Всі</a></li>
-        <li class="categories-list-item "><a class="category_ajax">Філадельфія</a></li>
-        <li class="categories-list-item "><a class="category_ajax">Каліфорнія</a></li>
-        <li class="categories-list-item "><a class="category_ajax">Запечені</a></li>
-        <li class="categories-list-item "><a class="category_ajax">Фірмові</a></li>
-        <li class="categories-list-item "><a class="category_ajax">Преміум</a></li>
-        <li class="categories-list-item "><a class="category_ajax">Макі</a></li>
-    </ul>
-    <div class="all-products">
+<ul  class="categories-list" *ngIf="currentCategoryPath == 'rolls'" >
+  <li class="categories-list-item active"><a class="category_ajax">Всі</a></li>
+  <li class="categories-list-item "><a class="category_ajax">Філадельфія</a></li>
+  <li class="categories-list-item "><a class="category_ajax">Каліфорнія</a></li>
+  <li class="categories-list-item "><a class="category_ajax">Запечені</a></li>
+  <li class="categories-list-item "><a class="category_ajax">Фірмові</a></li>
+  <li class="categories-list-item "><a class="category_ajax">Преміум</a></li>
+  <li class="categories-list-item "><a class="category_ajax">Макі</a></li>
+</ul>
+<div class="all-products">
+  <div *ngFor="let product of userProducts">
         <div class="product">
-            <img width="270px" [routerLink]="[ '/product-category/'+product.category.name, product.id ]"
+            <img width="270px" [routerLink]="[ '/product/'+product.category.name, product.id ]"
                 [src]="product.imagePath">
-            <h5 [routerLink]="[ '/product-category/'+product.category.path, product.id ]">{{ product.name }}</h5>
-            <div><a>{{ product.description }}</a> <a class="weight">{{ product.weight }} гр</a></div>
+            <h6 [routerLink]="[ '/product/'+product.category.path, product.id ]">{{ product.name }}</h6>
+            <div *ngIf="currentCategoryPath == 'rolls'  " ><a  class="description" >{{ product.description }}</a> <a  class="weight">{{ product.weight }} гр</a></div>
+          <div *ngIf="currentCategoryPath == 'sets'  " ><a  class="description" >{{ product.description }}</a> <a  class="weight">{{ product.weight }} гр</a></div>
+          <div *ngIf="currentCategoryPath == 'drinks' ">  <a  class="weight ">{{ product.weight }} л</a></div>
+          <div *ngIf="currentCategoryPath == 'sauces' ">  <a  class="weight ">{{ product.weight }} г</a></div>
             <div class="about">
                 <span>
                     {{ product.price * product.count }} грн

@@ -1,0 +1,48 @@
+.tab-content {
+  padding-top: 200px;
+  min-height: 600px;
+}
+.square {
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  background-color: #b5d8f7;
+  text-align: center;
+  border-radius: 5px;
+}
+input{
+  width: 520px;
+  height: 50px;
+  margin:10px  10px ;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  padding:10px;
+  font-family: serif;
+}
+.name{
+  input{
+    width: 250px;
+  }
+}
+
+input:focus {
+  outline: 4px solid rgba(110, 186, 211, 0.5);
+  border-radius: 3px;
+  border: 1px solid rgba(110, 186, 211, 1);
+}
+button {
+  width: 250px;
+  height: 50px;
+  margin:40px  10px ;
+  border: 2px solid #b5d8f7;
+  border-radius: 10px;
+}
+.white:hover{
+  background-color: #b5d8f7;
+}
+.blue{
+  background-color: #b5d8f7;
+}
+.blue:hover{
+  background-color: white;
+}

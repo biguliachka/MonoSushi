@@ -2,25 +2,25 @@
     <a>Оформити замовлення</a>
 </div>
 <div class="checkout">
-    <div class="information">
-        <img src={{img}}>
-        <p>{{name}}</p>
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="minus">-</button>
-            <input class="form-control" type="text" [value]="count">
-            <button type="button" class="plus ">+</button>
-        </div>
-        <div class="basket-price empty ">
-            <b id="basket-total-price" class="card-total-price">{{total}}</b>
-            <span> грн</span>
-        </div>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash"
-            viewBox="0 0 16 16">
-            <path
-                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-            <path fill-rule="evenodd"
-                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-        </svg>
+  <div class="information" *ngFor="let product of basket">
+    <img class="img" [src]="product.imagePath">
+    <p>{{product.name}}</p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" (click)="productCount(product, false)" class="minus">-</button>
+      <input class="form-control" type="text" [value]="product.count">
+      <button type="button" (click)="productCount(product, true)" class="plus ">+</button>
+    </div>
+    <div class="basket-price empty ">
+      <b id="basketTotalPrice" class="card-total-price">{{product.count * product.price}}</b>
+      <span> грн</span>
+    </div>
+    <svg (click)="deleteBasket(product)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash"
+         viewBox="0 0 16 16">
+      <path
+        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+      <path fill-rule="evenodd"
+            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+    </svg>
     </div>
     <p class="d-flex justify-content-end mb-5">До сплати: {{total}} грн</p>
     <input type="text" placeholder="Введіть промокод"><button>ЗАСТОСУВАТИ</button>
@@ -43,7 +43,7 @@
     <select name="educational" class="mx-2" >
         <option value="Навчальні тримачі" selected disabled>Навчальні тримачі</option>
         <option *ngFor="let select of selectArray" value="{{select}}">{{select}}</option>
-       
+
     </select>
     <div class=" d-flex mt-5 mb-2">
         <div class="square ">2</div>

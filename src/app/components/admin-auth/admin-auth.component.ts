@@ -14,7 +14,7 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
 })
 export class AdminAuthComponent implements OnInit {
 
-  
+
   public authForm!: FormGroup;
   public loginSubscription!: Subscription;
 
@@ -24,7 +24,7 @@ export class AdminAuthComponent implements OnInit {
     private router: Router,
     private auth: Auth,
     private afs: Firestore,
-    
+
   ) { }
 
   ngOnInit(): void {
@@ -45,17 +45,17 @@ export class AdminAuthComponent implements OnInit {
   loginUser(): void {
     const { email, password } = this.authForm.value;
     this.login(email, password).then(() => {
-      
+
     }).catch(e => {
     console.log(e);
-  
+
     })
   }
 
  async login(email: string, password: string): Promise<void> {
     const credential = await signInWithEmailAndPassword(this.auth, email, password);
     this.loginSubscription = docData(doc(this.afs, 'users', credential.user.uid)).subscribe(user => {
-    
+
       if(user && user.role === ROLE.ADMIN){
         this.router.navigate(['/admin/action']);
         const currentUser = { ...user, uid: credential.user.uid };

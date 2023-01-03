@@ -18,20 +18,16 @@ export class ActionInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(response => {
-      this.currentAction = response.actionInfo;
-    })
- this.text =this.currentAction.description.split('\n')
-    
+   this.loadAction()
+
   }
 
   loadAction(): void {
     const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.actionService.getOne(id).subscribe(data => {
       this.currentAction = data;
+      this.text =this.currentAction.description.split('.')
     })
   }
-
-
 
 }

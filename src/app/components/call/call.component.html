@@ -1,0 +1,14 @@
+<mat-dialog-content>
+<form  [formGroup]="authForm">
+  <h2 class="title ">МИ ЗАТЕЛЕФОНУЄМО</h2>
+  <h6>Залиште номер телефону і наші менеджери зв'яжуться з вами</h6>
+  <div class="form-group">
+    <input type="text" formControlName="name" placeholder="Ваше ім'я">
+  </div>
+  <div class="form-group">
+    <input type="text" formControlName="number" placeholder="Ваш номер телефону">
+  </div>
+  <button [disabled]="authForm.invalid" type="button"  class="btn "
+          mat-dialog-close><a>НАДІСЛАТИ</a></button>
+</form>
+</mat-dialog-content>
