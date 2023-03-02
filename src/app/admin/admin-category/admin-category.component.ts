@@ -16,7 +16,7 @@ export class AdminCategoryComponent implements OnInit {
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
-  private currentCategoryId = 0;
+  public currentCategoryId = 0;
   public addStatus = false;
 
   constructor(

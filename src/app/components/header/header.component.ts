@@ -29,7 +29,7 @@ public isCall = false;
   public count = 0;
   public img!: string;
   public name!: string;
-  private basket: Array<IProductResponse> = [];
+  public basket: Array<IProductResponse> = [];
 
   constructor(
     private orderService: OrderService,
@@ -80,8 +80,7 @@ public isCall = false;
         console.log(result);
       })
     }
-    else if (!this.isBasket) {
-
+    else {
      this.closeModal()
     }
   }
@@ -124,7 +123,7 @@ closeModal():void{
   }
   OpenCallDialog(): void {
     this.isCall = !this.isCall
-    if (this.isCall == true) {
+    if (this.isCall) {
       this.callDialog.open(CallComponent, {
         backdropClass: 'call-dialog-back',
         panelClass: 'call-dialog',
@@ -133,7 +132,7 @@ closeModal():void{
         console.log(result);
       })
     }
-    else if (!this.isCall ) {
+    else {
       this.closeModal()
     }
   }

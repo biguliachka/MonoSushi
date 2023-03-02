@@ -9,9 +9,8 @@ import {AccountService} from "../../../shared/services/account/account.service";
 export class PersonalDataComponent implements OnInit {
 
   public user!: any;
-  public userName!: any
   constructor(
-    private accountService: AccountService
+
   ) { }
 
 

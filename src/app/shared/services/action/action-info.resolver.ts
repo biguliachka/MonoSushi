@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+   Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 import { IActionResponse } from '../../interfaces/action/action.interface';
 import { ActionService } from './action.service';
 
@@ -17,6 +16,6 @@ export class ActionInfoResolver implements Resolve<IActionResponse> {
   constructor(private actionService: ActionService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IActionResponse> {
-    return this.actionService.getOne(Number(route.paramMap.get('id'))); 
+    return this.actionService.getOne(Number(route.paramMap.get('id')));
   }
 }

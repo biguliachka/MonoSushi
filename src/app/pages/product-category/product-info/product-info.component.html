@@ -1,29 +1,34 @@
 <div class="route">
   <a  [routerLink]="[ '' ]">Головна &#8226;</a>
-  <a  [routerLink]="[ '/product/'+currentProduct.category.path ]">{{currentProduct.category.name}} &#8226;</a>
-    <a>{{currentProduct.name}}</a>
+  <a  [routerLink]="[ '/product/'+currentCategoryPath ]">{{currentCategoryName}} &#8226;</a>
+    <a>{{currentName}}</a>
 </div>
 <div class="container ">
     <div class="col-12 mt-3">
         <div class=" mb-3">
             <div class="row g-0">
                 <div class="col-md-6 d-flex align-items-center ">
-                    <img [src]="currentProduct.imagePath" class="img-fluid rounded-start" [alt]="currentProduct.name">
+                    <img [src]="currentImagePath" class="img-fluid rounded-start" [alt]="currentName">
                 </div>
                 <div class="col-md-5 d-flex align-items-center ">
                     <div class="card-body">
-                        <h1 class="card-title">{{ currentProduct.name }}</h1>
-                      <div *ngIf="currentCategoryPath !== ( 'drinks' && 'sauces' ) ">
-                        <p  class="card-text"><a style="color:#b5d8f7">Склад: </a>{{ currentProduct.description }}</p>
-                        <p class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentProduct.weight }} гр</p>
+                        <h1 class="card-title">{{ currentName }}</h1>
+                      <div *ngIf="currentCategoryPath ===  'rolls'  ">
+                        <p  class="card-text"><a style="color:#b5d8f7">Склад: </a>{{ currentDescription }}</p>
+                        <p class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentWeight }} гр</p>
                     </div>
-                      <p *ngIf="currentCategoryPath ==( 'drinks' && 'sauces' )" class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentProduct.weight }} л</p>
+                      <div *ngIf="currentCategoryPath ==  'sets'  ">
+                        <p  class="card-text"><a style="color:#b5d8f7">Склад: </a>{{ currentDescription }}</p>
+                        <p class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentWeight }} гр</p>
+                      </div>
+                      <p *ngIf="currentCategoryPath ===( 'drinks' )" class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentWeight }} л</p>
+                      <p *ngIf="currentCategoryPath ===( 'sauces' )" class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentWeight }} г</p>
                       <span>
-                            {{ currentProduct.price  * currentProduct.count }} грн
+                            {{ currentPrice  * currentCount }} грн
                         </span>
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" (click)="productCount(currentProduct, false)" class="minus">-</button>
-                            <input class="form-control" type="text" [value]="currentProduct.count">
+                            <input class="form-control" type="text" [value]="currentCount">
                             <button type="button" (click)="productCount(currentProduct, true)" class="plus ">+</button>
                         </div><button (click)="addToBasket(currentProduct)">Замовити</button>
 

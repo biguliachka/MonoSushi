@@ -13,7 +13,13 @@ export class ProductInfoComponent implements OnInit {
   public currentProduct!: IProductResponse;
   public currentCategoryName!: string;
   public currentCategoryPath!: string;
+  public currentImagePath!: string;
+  public currentName!: string;
+  public currentPrice!: number;
+  public currentCount!: number;
 
+  public currentWeight!: string;
+  public currentDescription!: string;
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
@@ -25,7 +31,12 @@ export class ProductInfoComponent implements OnInit {
       this.currentProduct = response.productInfo;
       this.currentCategoryName = this.currentProduct.category.name;
       this.currentCategoryPath = this.currentProduct.category.path;
-
+      this.currentImagePath = this.currentProduct.imagePath;
+      this.currentName = this.currentProduct.name;
+      this.currentPrice = this.currentProduct.price;
+      this.currentCount = this.currentProduct.count;
+      this.currentWeight = this.currentProduct.weight;
+      this.currentDescription = this.currentProduct.description
     })
   }
 
@@ -37,7 +48,7 @@ export class ProductInfoComponent implements OnInit {
   }
 
   productCount(product: IProductResponse, value: boolean): void {
-    if(value){
+    if(value && product.count > 1){
       ++product.count;
     } else if(!value && product.count > 1){
       --product.count;

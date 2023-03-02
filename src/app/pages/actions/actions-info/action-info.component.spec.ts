@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActionInfoComponent } from './action-info.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {RouterTestingModule} from "@angular/router/testing";
 
 describe('ActionInfoComponent', () => {
   let component: ActionInfoComponent;
@@ -8,7 +10,10 @@ describe('ActionInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActionInfoComponent ]
+      declarations: [ ActionInfoComponent ],
+      imports:
+        [HttpClientTestingModule,
+        RouterTestingModule]
     })
     .compileComponents();
   });
@@ -22,4 +27,6 @@ describe('ActionInfoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

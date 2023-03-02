@@ -7,19 +7,12 @@ import { AccountService } from 'src/app/shared/services/account/account.service'
   styleUrls: ['./cabinet.component.scss']
 })
 export class CabinetComponent implements OnInit {
-public user!: any;
-public userName!: any
-  constructor(
-    private accountService: AccountService
-  ) { }
+
+  constructor() { }
 
 
   ngOnInit(): void {
-    this.userPage()
   }
 
-  userPage(): void {
-   this.user = JSON.parse(localStorage.currentUser)
 
-  }
 }

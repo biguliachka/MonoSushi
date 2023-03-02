@@ -21,8 +21,8 @@ export class AdminProductComponent implements OnInit {
   public uploadPercent = 0;
   public isUploaded = false;
   public addStatus = false;
-  private currentCategoryId = 0;
-  private currentProductId = 0;
+
+  public currentProductId = 0;
 
 
   constructor(

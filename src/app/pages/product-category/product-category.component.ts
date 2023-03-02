@@ -45,7 +45,7 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
       this.eventSubscription.unsubscribe();
   }
   productCount(product: IProductResponse, value: boolean): void {
-    if(value){
+    if(value && product.count > 1){
       ++product.count;
     } else if(!value && product.count > 1){
       --product.count;

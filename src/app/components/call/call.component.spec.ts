@@ -1,6 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CallComponent } from './call.component';
+import {Auth} from "@angular/fire/auth";
+import {Firestore} from "@angular/fire/firestore";
+import {MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
+import {RouterTestingModule} from "@angular/router/testing";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 describe('CallComponent', () => {
   let component: CallComponent;
@@ -8,8 +14,19 @@ describe('CallComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CallComponent ]
-    })
+      declarations: [ CallComponent ],
+      imports: [
+        HttpClientTestingModule,
+        MatDialogModule,
+        RouterTestingModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: Auth, useValue: {} },
+        { provide: Firestore, useValue: {} }
+      ] })
+
     .compileComponents();
   });
 

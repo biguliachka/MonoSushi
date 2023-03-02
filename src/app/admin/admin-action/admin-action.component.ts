@@ -17,7 +17,7 @@ export class AdminActionComponent implements OnInit {
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
-  private currentActionId = 0;
+  public currentActionId = 0;
   public addStatus = false;
 
   constructor(
@@ -38,7 +38,6 @@ export class AdminActionComponent implements OnInit {
     let m: string = `${dd.getMonth() + 1}`
     let y: string = `${dd.getFullYear()}`
     if (m.length < 2) m = '0' + m;
-    if (y.length < 2) y = '0' + y;
     this.actionForm = this.fb.group({
       name: [null, Validators.required],
       date: [`${m}.${y}`, Validators.required],
