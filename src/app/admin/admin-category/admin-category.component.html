@@ -23,7 +23,7 @@
     <table class="list" id="table">
         <thead>
             <tr>
-                <td style="width :200px; "> <a>№ </a> </td>
+                <td style="width :200px; "> <a>ID </a> </td>
                 <td style="width :200px; "> <a>Назва </a> </td>
                 <td style="width :300px;"> <a>Шлях</a></td>
                 <td style="width :150px; "><a>Картинка</a></td>
@@ -32,7 +32,7 @@
         </thead>
         <tbody *ngFor="let category of adminCategories">
             <tr>
-                <td style="width :200px; "> <a>№ {{ category.id }}</a> </td>
+                <td style="width :200px; "> <a>{{ category.id }}</a> </td>
                 <td style="width :200px; "> <a>{{ category.name }} </a> </td>
                 <td style="width :300px;"> <a>{{ category.path }}</a></td>
                 <td style="width :150px; "><img [src]="category.imagePath" alt="" height="50px"></td>

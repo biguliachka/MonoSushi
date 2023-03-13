@@ -7,5 +7,5 @@ export interface IActionRequest {
 }
 
 export interface IActionResponse extends IActionRequest {
-    id: number;
+    id: number | string;
 }

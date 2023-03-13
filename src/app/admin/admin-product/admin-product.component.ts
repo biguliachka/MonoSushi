@@ -22,7 +22,7 @@ export class AdminProductComponent implements OnInit {
   public isUploaded = false;
   public addStatus = false;
 
-  public currentProductId = 0;
+  public currentProductId!: string | number ;
 
 
   constructor(
@@ -55,8 +55,8 @@ export class AdminProductComponent implements OnInit {
     });
   }
   loadCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
       this.productForm.patchValue({
         category: this.adminCategories[0].id
       })
@@ -64,26 +64,17 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadProduct(): void {
-    this.productService.getAll().subscribe(data => {
-      this.adminProducts = data;
+    this.productService.getAllFirebase().subscribe(data => {
+      this.adminProducts = data as IProductResponse[];
     })
   }
   addProduct(): void {
     if (this.editStatus) {
-      this.productService.update(this.productForm.value, this.currentProductId).subscribe(() => {
-        this.loadProduct();
-        this.productForm.reset()
-        this.isUploaded = false;
-        this.addStatus = false;
-        this.editStatus = false;
-
+      this.productService.updateFirebase(this.productForm.value, this.currentProductId as string).then(() => {
+        this.loadCategories();
       })
     } else {
-      this.productService.create(this.productForm.value).subscribe(() => {
-        this.loadProduct();
-        this.addStatus = false;
-        this.editStatus = false;
-
+      this.productService.createFirebase(this.productForm.value).then(() => {
       })
     }
 
@@ -110,8 +101,9 @@ export class AdminProductComponent implements OnInit {
   }
 
   deleteProduct(product: IProductResponse): void {
-    this.productService.delete(product.id).subscribe(() => {
+    this.productService.deleteFirebase(product.id as string).then(() => {
       this.loadProduct();
+
     })
   }
   upload(event: any): void {

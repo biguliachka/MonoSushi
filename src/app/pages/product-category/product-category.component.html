@@ -13,8 +13,9 @@
 </ul>
 <div class="all-products">
   <div *ngFor="let product of userProducts">
+    <div *ngIf="currentCategoryPath == product.category.path">
         <div class="product">
-            <img width="270px" [routerLink]="[ '/product/'+product.category.name, product.id ]"
+            <img width="270px" [routerLink]="[ '/product/'+product.category.path, product.id ]"
                 [src]="product.imagePath">
             <h6 [routerLink]="[ '/product/'+product.category.path, product.id ]">{{ product.name }}</h6>
             <div *ngIf="currentCategoryPath == 'rolls'  " ><a  class="description" >{{ product.description }}</a> <a  class="weight">{{ product.weight }} гр</a></div>
@@ -29,8 +30,9 @@
                     <button type="button" (click)="productCount(product, false)" class="minus">-</button>
                     <input class="form-control" type="text" [value]="product.count">
                     <button type="button" (click)="productCount(product, true)" class="plus ">+</button>
-                </div><button (click)="addToBasket(product)">Замовити</button>
+                </div><button (click)="loadProducts()">Замовити</button>
             </div>
         </div>
+    </div>
     </div>
 </div>

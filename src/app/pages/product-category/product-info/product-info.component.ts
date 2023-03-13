@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import { IProductResponse } from 'src/app/shared/interfaces/product/product.interface';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { ProductService } from 'src/app/shared/services/product/product.service';
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-product-info',
@@ -20,35 +21,35 @@ export class ProductInfoComponent implements OnInit {
 
   public currentWeight!: string;
   public currentDescription!: string;
+
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(response => {
-      this.currentProduct = response.productInfo;
-      this.currentCategoryName = this.currentProduct.category.name;
-      this.currentCategoryPath = this.currentProduct.category.path;
-      this.currentImagePath = this.currentProduct.imagePath;
-      this.currentName = this.currentProduct.name;
-      this.currentPrice = this.currentProduct.price;
-      this.currentCount = this.currentProduct.count;
-      this.currentWeight = this.currentProduct.weight;
-      this.currentDescription = this.currentProduct.description
-    })
+    this.loadProduct()
   }
 
   loadProduct(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.productService.getOne(id).subscribe(data => {
-      this.currentProduct = data;
+    const id = this.activatedRoute.snapshot.paramMap.get('currentCategoryPath');
+    this.productService.getOneFirebase(id as string).subscribe(data => {
+      this.currentCategoryName = data.category.name;
+      this.currentCategoryPath = data.category.path;
+      this.currentImagePath = data.imagePath;
+      this.currentName = data.name;
+      this.currentPrice =data.price;
+      this.currentCount = data.count;
+      this.currentWeight =data.weight;
+      this.currentDescription = data.description
     })
   }
 
   productCount(product: IProductResponse, value: boolean): void {
-    if(value && product.count > 1){
+    if(value && product.count >= 1){
       ++product.count;
     } else if(!value && product.count > 1){
       --product.count;

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IActionResponse } from 'src/app/shared/interfaces/action/action.interface';
 import { ActionService } from 'src/app/shared/services/action/action.service';
 
 @Component({
@@ -9,7 +8,8 @@ import { ActionService } from 'src/app/shared/services/action/action.service';
   styleUrls: ['./action-info.component.scss']
 })
 export class ActionInfoComponent implements OnInit {
-  public currentAction!: IActionResponse;
+  public currentActionName! : string;
+  public currentActionTitle! : string
   public text!: any;
 
   constructor(
@@ -22,12 +22,12 @@ export class ActionInfoComponent implements OnInit {
 
   }
 
-  loadAction(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.actionService.getOne(id).subscribe(data => {
-      this.currentAction = data;
-      this.text =this.currentAction.description.split('.')
-    })
-  }
-
+   loadAction(): void {
+     const id = this.activatedRoute.snapshot.paramMap.get('id');
+     this.actionService.getOneFirebase(id as string).subscribe(data => {
+       this.currentActionName = data.name;
+       this.currentActionTitle = data.title;
+       this.text = data.description.split('.')
+     })
+   }
 }

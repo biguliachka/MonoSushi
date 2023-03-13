@@ -17,7 +17,7 @@ export class AdminActionComponent implements OnInit {
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
-  public currentActionId = 0;
+  public currentActionId! : string | number;
   public addStatus = false;
 
   constructor(
@@ -48,21 +48,21 @@ export class AdminActionComponent implements OnInit {
   }
 
   loadActions(): void {
-    this.actionService.getAll().subscribe(data => {
-      this.adminActions = data;
+    this.actionService.getAllFirebase().subscribe(data => {
+      this.adminActions = data as IActionResponse[];
     })
   }
 
   addAction(): void {
     if (this.editStatus) {
-      this.actionService.update(this.actionForm.value, this.currentActionId).subscribe(() => {
+      this.actionService.updateFirebase(this.actionForm.value, this.currentActionId as string).then(() => {
         this.loadActions();
       })
     } else {
-      this.actionService.create(this.actionForm.value).subscribe(() => {
-        this.loadActions();
+      this.actionService.createFirebase(this.actionForm.value).then(() => {
       })
     }
+
     this.editStatus = false;
     this.actionForm.reset();
     this.isUploaded = false;
@@ -83,8 +83,9 @@ export class AdminActionComponent implements OnInit {
   }
 
   deleteAction(action: IActionResponse): void {
-    this.actionService.delete(action.id).subscribe(() => {
+    this.actionService.deleteFirebase(action.id as string).then(() => {
       this.loadActions();
+
     })
   }
   upload(event: any): void {

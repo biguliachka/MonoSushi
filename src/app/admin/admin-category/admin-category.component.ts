@@ -16,9 +16,9 @@ export class AdminCategoryComponent implements OnInit {
   public editStatus = false;
   public uploadPercent!: number;
   public isUploaded = false;
-  public currentCategoryId = 0;
-  public addStatus = false;
 
+  public addStatus = false;
+  public currentCategoryId!: number | string;
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoryService,
@@ -41,19 +41,18 @@ export class AdminCategoryComponent implements OnInit {
   }
 
   loadCategories(): void {
-    this.categoryService.getAll().subscribe(data => {
-      this.adminCategories = data;
+    this.categoryService.getAllFirebase().subscribe(data => {
+      this.adminCategories = data as ICategoryResponse[];
     })
   }
 
   addCategory(): void {
     if (this.editStatus) {
-      this.categoryService.update(this.categoryForm.value, this.currentCategoryId).subscribe(() => {
+      this.categoryService.updateFirebase(this.categoryForm.value, this.currentCategoryId as string).then(() => {
         this.loadCategories();
       })
     } else {
-      this.categoryService.create(this.categoryForm.value).subscribe(() => {
-        this.loadCategories();
+      this.categoryService.createFirebase(this.categoryForm.value).then(() => {
       })
     }
     this.editStatus = false;
@@ -69,13 +68,14 @@ export class AdminCategoryComponent implements OnInit {
       imagePath: category.imagePath
     });
     this.editStatus = true;
-    this.currentCategoryId = category.id;
+    this.currentCategoryId = category.id as number;
     this.isUploaded = true;
   }
 
   deleteCategory(category: ICategoryResponse): void {
-    this.categoryService.delete(category.id).subscribe(() => {
+    this.categoryService.deleteFirebase(category.id as string).then(() => {
       this.loadCategories();
+
     })
   }
   upload(event: any): void {

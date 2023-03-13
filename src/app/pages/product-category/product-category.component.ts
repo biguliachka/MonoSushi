@@ -33,19 +33,27 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
   }
 
   loadProducts(): void {
-    const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
-    this.productService.getAllByCategory(categoryName).subscribe(data => {
-      this.userProducts = data;
-      this.currentCategoryName = this.userProducts[0].category.name;
-      this.currentCategoryPath = this.userProducts[0].category.path;
+    this.productService.getAllFirebase().subscribe(data => {
+      console.log(data)
+    })
+    this.productService.getAllFirebase().subscribe(data => {
+      for(let i=0;i<data.length;i++){
+        this.userProducts = data as IProductResponse[];
+        const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
+        if(this.userProducts[i].category.path == categoryName){
+          this.currentCategoryName = this.userProducts[i].category.name;
+          this.currentCategoryPath = this.userProducts[i].category.path;
+        }
+
+      }
+
     })
   }
-
   ngOnDestroy(): void {
       this.eventSubscription.unsubscribe();
   }
   productCount(product: IProductResponse, value: boolean): void {
-    if(value && product.count > 1){
+    if(value && product.count >= 1){
       ++product.count;
     } else if(!value && product.count > 1){
       --product.count;

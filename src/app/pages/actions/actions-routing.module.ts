@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ActionsComponent} from "./actions.component";
 import {ActionInfoComponent} from "./actions-info/action-info.component";
-import {ActionInfoResolver} from "../../shared/services/action/action-info.resolver";
+// import {ActionInfoResolver} from "../../shared/services/action/action-info.resolver";
 
 
 
