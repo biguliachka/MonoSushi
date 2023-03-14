@@ -24,7 +24,7 @@ export class BasketComponent implements OnInit {
     this.updateBasket();
   }
   loadBasket(): void {
-    if (localStorage.length > 0 && localStorage.getItem('basket')) {
+    if (localStorage.length >= 0 && localStorage.getItem('basket')) {
       this.basket = JSON.parse(localStorage.getItem('basket') as string);
       this.count = this.basket
         .reduce((count: number, prod: IProductResponse) => count + prod.count , 0);

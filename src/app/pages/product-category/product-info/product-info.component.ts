@@ -37,27 +37,31 @@ export class ProductInfoComponent implements OnInit {
   loadProduct(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('currentCategoryPath');
     this.productService.getOneFirebase(id as string).subscribe(data => {
-      this.currentCategoryName = data.category.name;
-      this.currentCategoryPath = data.category.path;
-      this.currentImagePath = data.imagePath;
-      this.currentName = data.name;
-      this.currentPrice =data.price;
-      this.currentCount = data.count;
-      this.currentWeight =data.weight;
-      this.currentDescription = data.description
+      this.currentProduct = data as IProductResponse
+      this.currentCategoryName = this.currentProduct.category.name;
+      this.currentCategoryPath = this.currentProduct.category.path;
+      this.currentImagePath = this.currentProduct.imagePath;
+      this.currentName = this.currentProduct.name;
+      this.currentPrice =this.currentProduct.price;
+      this.currentCount = this.currentProduct.count;
+      this.currentWeight =this.currentProduct.weight;
+      this.currentDescription = this.currentProduct.description
     })
   }
 
   productCount(product: IProductResponse, value: boolean): void {
-    if(value && product.count >= 1){
+    if(value){
       ++product.count;
+
     } else if(!value && product.count > 1){
       --product.count;
     }
+    this.currentCount = product.count
   }
 
   addToBasket(product: IProductResponse): void {
     let basket: Array<IProductResponse> = [];
+    console.log(product)
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       basket = JSON.parse(localStorage.getItem('basket') as string);
       if(basket.some(prod => prod.id === product.id)){
@@ -70,7 +74,7 @@ export class ProductInfoComponent implements OnInit {
       basket.push(product);
     }
     localStorage.setItem('basket', JSON.stringify(basket));
-    product.count = 1;
+    this.currentCount = 1;
     this.orderService.changeBasket.next(true);
   }
 

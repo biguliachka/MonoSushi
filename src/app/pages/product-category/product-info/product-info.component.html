@@ -24,7 +24,7 @@
                       <p *ngIf="currentCategoryPath ===( 'drinks' )" class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentWeight }} л</p>
                       <p *ngIf="currentCategoryPath ===( 'sauces' )" class="card-text"><a style="color:#b5d8f7">Вага: </a> {{ currentWeight }} г</p>
                       <span>
-                            {{ currentPrice  * currentCount }} грн
+                            {{ currentPrice * currentCount }} грн
                         </span>
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" (click)="productCount(currentProduct, false)" class="minus">-</button>

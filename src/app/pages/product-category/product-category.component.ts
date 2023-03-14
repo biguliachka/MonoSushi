@@ -34,11 +34,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
 
   loadProducts(): void {
     this.productService.getAllFirebase().subscribe(data => {
-      console.log(data)
-    })
-    this.productService.getAllFirebase().subscribe(data => {
+      this.userProducts = data as IProductResponse[];
       for(let i=0;i<data.length;i++){
-        this.userProducts = data as IProductResponse[];
         const categoryName = this.activatedRoute.snapshot.paramMap.get('category') as string;
         if(this.userProducts[i].category.path == categoryName){
           this.currentCategoryName = this.userProducts[i].category.name;
@@ -64,8 +61,8 @@ export class ProductCategoryComponent implements OnInit, OnDestroy {
     let basket: Array<IProductResponse> = [];
     if(localStorage.length > 0 && localStorage.getItem('basket')){
       basket = JSON.parse(localStorage.getItem('basket') as string);
-      if(basket.some(prod => prod.id === product.id)){
-        const index = basket.findIndex(prod => prod.id === product.id);
+      if(basket.some(prod => prod.id == product.id)){
+        const index = basket.findIndex(prod => prod.id == product.id);
         basket[index].count += product.count;
       } else {
         basket.push(product);

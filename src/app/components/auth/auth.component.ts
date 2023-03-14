@@ -99,6 +99,7 @@ export class AuthComponent implements OnInit {
       orders: [],
       role: 'USER'
     };
+
     setDoc(doc(this.afs, 'users', credential.user.uid), user);
   }
 

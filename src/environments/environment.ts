@@ -9,7 +9,8 @@ export const environment = {
     projectId: "monosushi-383ef",
     storageBucket: "monosushi-383ef.appspot.com",
     messagingSenderId: "899281087059",
-    appId: "1:419170388090:web:9a920b3dd4a6c7999153c3",
+    appId: "1:899281087059:web:b0f1e5ba343c0d50bab4a6",
+    measurementId: "G-TZNCMB5JHJ"
   },
   production: false,
   BACKEND_URL: 'http://localhost:3000'
